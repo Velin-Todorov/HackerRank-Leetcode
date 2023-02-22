@@ -2,22 +2,19 @@
 
 
 def take_string(string):
-    
-    idx = 0
 
     def recurse(string):
-        nonlocal idx
+        if string == '':
+            return ''
 
-        if idx + 1 == len(string):
-            return string
-        
-        str_lst = [string]
+        output = recurse(string[2:])
+        elements = list(string[0:2]) #take the first two elements of the string
 
-        str_list[idx], str_list[idx + 1] =  str_list[idx + 1], str_list[idx]
+        elements[0], elements[1] = elements[1], elements[0] #swap them
 
-        string = ''.join(str_list)
-
-        return recurse(string)
+        string = ''.join(elements) + output #recreate the string
+         
+        return string
 
     result = recurse(string)
 
